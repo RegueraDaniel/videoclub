@@ -23,9 +23,10 @@ public class CategoriaController {
 		
 		//Categoria categoria = categoriaService.one(id);
 		CategoriaDTO categoriaDTO = categoriaService.oneDTO(id);
-		
+		categoriaDTO.setConteoAlmacenes(categoriaService.categoriaEnAlmacen(categoriaDTO));
 		model.addAttribute("categoriaDTO", categoriaDTO);
 		model.addAttribute("prueba", "pruebaxx");
+		
 		return "detalle-categoria";
 	}
 	

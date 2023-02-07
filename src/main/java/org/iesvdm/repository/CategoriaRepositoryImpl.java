@@ -1,5 +1,6 @@
 package org.iesvdm.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.iesvdm.domain.Categoria;
@@ -55,5 +56,24 @@ public class CategoriaRepositoryImpl implements CategoriaRepository{
 		return listaCategoria;
 	}
 	
+	@Override
+	public List<String> pelisCategoriaAlmacenes(CategoriaDTO categoriaDTO) {
+		
+		
+		
+		List<String> listado = this.jdbcTemplate.query("""
+				select i.id_almacen, count(pc.id_pelicula) as pelisEnAlmacen
+				from inventario as i 
+				inner join pelicula_categoria as pc
+				on pc.id_pelicula=i.id_pelicula
+				where id_categoria=?
+				group by i.id_almacen; 	
+			"""
+									, (rs, rowNum) -> ("Almacen "+ rs.getInt("id_almacen")+": "+
+																	rs.getInt("pelisEnAlmacen")+" películas de la categoría.")
+									, categoriaDTO.getId());
+		
+		return listado;
+	}
 	
 }

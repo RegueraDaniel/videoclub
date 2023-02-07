@@ -1,6 +1,7 @@
 package org.iesvdm.dto;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import org.iesvdm.domain.Categoria;
@@ -15,10 +16,12 @@ import lombok.NoArgsConstructor;
 public class CategoriaDTO extends Categoria {
 
 	private int conteoPeliculas;
+	private List<String> conteoAlmacenes;
 
 	public CategoriaDTO(long id, String nombre, Date ultimaActualizacion, int conteoPeliculas) {
 		super(id, nombre, ultimaActualizacion);
 		this.conteoPeliculas = conteoPeliculas;
+		this.conteoAlmacenes= null;
 	}
 
 	@Override

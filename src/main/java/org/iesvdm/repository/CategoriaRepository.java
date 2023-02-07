@@ -10,4 +10,5 @@ public interface CategoriaRepository {
 	public Categoria find(Long id);
 	public CategoriaDTO findDTO(Long id);
 	public List<Categoria> findAll();
+	public List<String> pelisCategoriaAlmacenes(CategoriaDTO categoriaDTO);
 }

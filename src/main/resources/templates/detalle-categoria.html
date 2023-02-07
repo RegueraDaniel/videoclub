@@ -29,6 +29,12 @@
 		<div class="col-md-6" th:text="#{categoria.conteoPeliculas}"></div>
 		<div class="col-md-6" th:text="${categoriaDTO.conteoPeliculas}"></div>
 	</div>
+	<div class="row">
+		<div class="col-md-12 p-3 mt-4"><span class="h3" th:text="#{categoria.almacen}"></span></div>
+	</div>
+	<div class="row" th:each="almacen: ${categoriaDTO.conteoAlmacenes}">
+		<div class="col-md-6" th:text="${almacen}"></div>
+	</div>
 </div>
 </body>
 </html>
